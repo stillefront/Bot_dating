@@ -9,11 +9,6 @@ var chat_start = require('../controllers/chatStart');
 
 /// Routes ///
 
-// GET catalog home page.
-//router.get('/', function(req, res, next) {
- //   res.render('bot_welcome');
-//});
-
 
 // GET select bots "bot_welcome.pug"
 router.get('/', bot_controller.index)
@@ -23,7 +18,7 @@ router.get('/chat', chat_start.index)
 
 
 router.post('/chat', function (req, res) {
-  var bot1=req.body.bot1;
+  var bot1 = req.body.bot1;
   var bot2 = req.body.bot2
   console.log("Der name der ausgewählten bots ist " + bot1 + " und " + bot2);
 })
