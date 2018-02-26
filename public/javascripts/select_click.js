@@ -23,7 +23,7 @@ $( document ).ready(function() {
     }
     if (counter > 2 ) {
       $('.klick').removeClass('clicked');
-      $( ".chat-start h1" ).replaceWith( "<h1>Chat Now!</h1>" );
+      $( ".chat-start h1" ).replaceWith( "<h1>Bitte Wähle zwei Bots aus:</h1>" );
       bot_array = [0,0];
       counter = 0;
       console.log(counter);
