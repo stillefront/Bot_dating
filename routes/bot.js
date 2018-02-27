@@ -16,14 +16,8 @@ router.get('/', bot_controller.index)
 // GET chat app
 router.get('/chat', chat_start.index) 
 
-
-router.post('/chat', function (req, res) {
-  var bot1 = req.body.bot1;
-  var bot2 = req.body.bot2
-  console.log("Der name der ausgewählten bots ist " + bot1 + " und " + bot2);
-})
-
-  
+//route the POST information to the search query to search for the tokens of selected bots
+router.post('/chat', chat_start.searchForBothToken)
 
 
 module.exports = router;
