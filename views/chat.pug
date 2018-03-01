@@ -2,4 +2,13 @@ extends layout
 
 block content
 
-    p This will be a chat.
+    p= title
+
+
+
+    #chat
+        #messages
+            form(action="")
+                input(id="m" type="text")
+                input(type="button" value="Send")
+                input(id="stop" type="button" value="STOP!")

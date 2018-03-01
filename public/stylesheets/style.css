@@ -40,3 +40,14 @@ h5 {
 .clicked {
   background-color: yellow;
 }
+
+#chat {
+  position: fixed;
+  top: 90%;
+  width: 95%;
+}
+
+#m {
+  width: 85%;
+}
+
