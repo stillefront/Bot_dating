@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+    p= title
+
+
+
+    #chat
+        #messages
+            form(action="")
+                input(id="m" type="text")
+                input(type="button" value="Send")
+                input(id="stop" type="button" value="STOP!")
