@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-console.log('This script populates bots to your database. Specified database as argument - e.g.: node populate_bot_database mongodb://your_username:your_password@your_dabase_url');
+console.log('This script populates bots to your database. Specified database as argument - e.g.: node populate_bot_database mongodb://metadating_admin:Bothoch2@ds235388.mlab.com:35388/chatbot_metadating');
 
 // Get arguments passed on command line
 var userArgs = process.argv.slice(2);
@@ -50,7 +50,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Victoria Bach',
                 'Medizinstudentin / film-lover / Wanderlust / Kick-Boxing / Berlin, 25, 170 groß und abenteuerlustig',
-                './public/images/bot_profile_picture/victoria_bach',
+                'victoria_bach',
                 '78ae1fec4ace101bf37f56a82788ec53',
                 'dev_token_test1',
                 '2018-02-15',
@@ -61,7 +61,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Ralf Rosenthal',
                 '32, Bernau, leidenschaftlicher Fachmann für Orthopädische Fußeinlagen, 180cm groß & offen für alles und schöne Füße ;-)',
-                './public/images/bot_profile_picture/ralf_rosenthal',
+                'ralf_rosenthal',
                 '64928745850c378383b8db61a027150b',
                 'dev_token_test2',
                 '2018-02-15',
@@ -72,7 +72,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Bob',
                 'Bob ist ein junger, aufstrebender und nerdiger Charakter. Er hat auf der beruflichen Seite sehr viel Erfolg - leider sieht es im Liebesleben ganz anders aus...',
-                './public/images/bot_profile_picture/bob',
+                'bob',
                 'c7d5a99817fc526df4443168538f6e56',
                 'dev_token_test2',
                 '2018-02-15',
@@ -83,7 +83,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Alice von Wunderland ',
                 'Alice (35 Jahre) ist eine erfolgreiche, selbstbewusste Geschäftsfrau und nach vielen unglücklichen Affären nun auf der Suche nach einem geeigneten Vater für ihr Wunschkind.',
-                './public/images/bot_profile_picture/alice_von_wunderland',
+                'alice_von_wunderland',
                 '3ec0d3d5c506330678f855d8db5d2037',
                 'dev_token_test2',
                 '2018-02-15',
@@ -94,7 +94,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Patricia Bait',
                 '30 Jahre alt, männlich verheiratet aber zur Zeit unglücklich . Einzelkind, hat einen guten Draht zu seinen Eltern. Wohnt mit seiner Frau zusammen in einer verglasten Villa, hat viele Designermöbel, exklusive, stylische Einrichtung. sehr reich. sammelt exotische, ausgestopfte Tiere',
-                './public/images/bot_profile_picture/patricia_bait',
+                'patricia_bait',
                 '31db0dac0d11964234072eda86449c23',
                 'dev_token_test2',
                 '2018-02-15',
@@ -105,7 +105,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Patrick Bateman',
                 'Patrick Bateman (30) ist sehr erfolgreich und steinreich. Er ist verheiratet, aber unglücklich. Die Liebe ist leider verwelkt. Er wohnt mit seiner Frau in einer verglasten, exklusiven Villa. Er sammelt exotische, ausgestopfte Tiere, von denen er die meisten selbst erlegt hat.',
-                './public/images/bot_profile_picture/patrick_bateman',
+                'patrick_bateman',
                 'b57305b1f5c2cb1f7027a298e3a63f0d',
                 'dev_token_test2',
                 '2018-02-15',
@@ -116,7 +116,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'David Dream',
                 'Sehr offen und gesellig, neugierig, fantasievoll, unabhängig von Urteilen anderer, unkonventionell. Gerne gesellig und unter Leuten. Unterhält sich gerne und geht auf lustige Diskussionen ein. Freut sich neue Menschen kennenzulernen. Sucht nach der wahren Liebe.',
-                './public/images/bot_profile_picture/david_dream',
+                'david_dream',
                 '56e125353144e848713e498b73f0c3b9',
                 'dev_token_test2',
                 '2018-02-15',
@@ -127,7 +127,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Rachel Rationality',
                 'Rachel Rationality, 22 Jahre, geboren in München, aktuell wohnhaft in Berlin. Studium der Wirtschaftsinformatik, Bachelor abgeschlossen. Sportlich aktiv, am liebsten Tennis. Politisch, wissenschaftlich, kulturell interessiert.',
-                './public/images/bot_profile_picture/rachel_rationality',
+                'rachel_rationality',
                 '9286815612a1ecb98de6077982e2ef12',
                 'dev_token_test2',
                 '2018-02-15',
@@ -138,7 +138,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Kim',
                 'Ich bin Kim 24 Jahre aus B - Lichtenberg, Girls meldet euch',
-                './public/images/bot_profile_picture/kim',
+                'kim',
                 '7ce59919b150111e38d7733164811bae',
                 'dev_token_test2',
                 '2018-02-15',
@@ -149,7 +149,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Charlie',
                 'Ich heiße Charlie Meier und bin 22 Jahre alt. Ich wohne derzeit in Berlin und studiere Grundschullehramt, bin aber in Sauen groß geworden (gemütlicher Ort in Brandenburg). Mein liebstes Hobby ist Nail Art, ich habe einen YouTube Channel. Ich bin Single und warte noch auf den Traumprinzen ;)',
-                './public/images/bot_profile_picture/charlie',
+                'charlie',
                 'c9183f20ef965f07e82c05b5a6157428',
                 'dev_token_test2',
                 '2018-02-15',
@@ -160,7 +160,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Habibo',
                 'Ich heiße Charlie Meier und bin 22 Jahre alt. Ich wohne derzeit in Berlin und studiere Grundschullehramt, bin aber in Sauen groß geworden (gemütlicher Ort in Brandenburg). Mein liebstes Hobby ist Nail Art, ich habe einen YouTube Channel. Ich bin Single und warte noch auf den Traumprinzen ;)',
-                './public/images/bot_profile_picture',
+                'notThere',
                 '035c15705d5a22f4ed49b32092ffdbe9',
                 'dev_token_test2',
                 '2018-02-15',
@@ -171,7 +171,7 @@ function createBots(cb) {
             bot_basicCreate(
                 'Glyphost-Gabi',
                 'description_lalala2',
-                './public/images/bot_profile_picture',
+                'notThere',
                 '535007d74377e1f9e98b6c3ebd5405b6',
                 'dev_token_test2',
                 '2018-02-15',
