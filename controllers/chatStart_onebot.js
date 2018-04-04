@@ -9,7 +9,7 @@ var bodyParser = require("body-parser");
 //implement the chat here
 exports.index = function(req, res, next) { 
         //res.send("Hier wird der chat zwisschen " + app.locals.bot1 + " und " + app.locals.bot2 + " stattfinden.");
-        res.render("chat_onebot", {title: "Hier wird der chat mit " + app.locals.bot1 + " stattfinden."})
+        res.render("chat_onebot", {title: "Hier wird der chat zwisschen " + app.locals.bot1 + " und dir stattfinden."})
 };
 
 //search fot the selected bots in the database 

@@ -2,10 +2,7 @@ extends layout
 
 block content
 
-    p= title
-
-
-
+    p.text-center= title
 
     .chat
         .chat-box
@@ -13,8 +10,8 @@ block content
     .chat-user
         form.form-inline#form-chat(action="")
             .form-group
-                input.form-control#username(type="text", name="username", value="")
+                input.form-control#username(type="text", name="username", value="", placeholder="Dein Name")
             .form-group
-                input.form-control#text-chat(type="text", name="textchat", value="")
-            button.btn.btn-default(type="submit", name="button", ) send             
+                input.form-control#text-chat(type="text", name="textchat", value="", placeholder="msg", autofocus)
+            button.btn.btn-default(type="submit", name="button", ) Send             
                 
