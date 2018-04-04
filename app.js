@@ -8,8 +8,13 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var bot = require('./routes/bot'); //import routes for bot area of site
+var socket = require ('./socket/socket'); //import socket server side 
 
 var app = express();
+app.io = require('socket.io')();
+
+socket(app.io); //connect socket.io to the app
+
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
@@ -31,7 +36,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use('/', index);
 app.use('/users', users);

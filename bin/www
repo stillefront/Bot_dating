@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('botchat-metadating:server');
 var http = require('http');
-var socketServer = require("../controllers/socketServer");
+//var socketServer = require("../controllers/socketServer");
 
 /**
  * Get port from environment and store in Express.
@@ -22,9 +22,14 @@ app.set('port', port);
 
 var server = http.createServer(app);
 //socket add
-var io = require("socket.io").listen(server);
+//var io = require("socket.io").listen(server);
 //take function from controller socketServer
-socketServer(io);
+//socketServer(io);
+
+//socket.io alternative test
+
+app.io.attach(server);
+
 
 /**
  * Listen on provided port, on all network interfaces.

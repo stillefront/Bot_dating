@@ -6,8 +6,15 @@ block content
 
 
 
-    #chat
-        #messages
-            form(action="")
-                input(id="m" type="text")
-                input(type="button" value="Send")
+
+    .chat
+        .chat-box
+    
+    .chat-user
+        form.form-inline#form-chat(action="")
+            .form-group
+                input.form-control#username(type="text", name="username", value="")
+            .form-group
+                input.form-control#text-chat(type="text", name="textchat", value="")
+            button.btn.btn-default(type="submit", name="button", ) send             
+                
