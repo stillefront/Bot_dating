@@ -8,6 +8,8 @@
   "dependencies": {
     "async": "^2.6.0",
     "body-parser": "~1.18.2",
+    "botmaster": "^3.2.0",
+    "botmaster-socket.io": "^1.0.3",
     "cookie-parser": "~1.4.3",
     "daemon": "^1.1.0",
     "debug": "~2.6.9",

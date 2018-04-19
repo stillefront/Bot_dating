@@ -15,6 +15,41 @@ app.io = require('socket.io')();
 
 socket(app.io); //connect socket.io to the app
 
+// this is the TEMPORAL connection botmaster. It needs to be moved in a seperate folder
+const Botmaster = require('botmaster');
+const SocketioBot = require('botmaster-socket.io');
+
+console.log(app.server);
+
+/*
+const botmaster = new Botmaster({
+  server,
+});
+
+
+
+// this thing also needs to be moved 
+const socketioSettings = {
+  id: 'SOME_BOT_ID_OF_YOUR_CHOOSING',
+  server: botmaster.server, // this is required for socket.io. You can set it to another node server object if you wish to. But in this example, we will use the one created by botmaster under the hood
+};
+
+const socketioBot = new SocketioBot(socketioSettings);
+botmaster.addBot(socketioBot);
+
+botmaster.use({
+  type: 'incoming',
+  name: 'my-middleware',
+  controller: (bot, update) => {
+    return bot.reply(update, 'Hello world!');
+  }
+});
+
+botmaster.on('error', (bot, err) => { // added
+  console.log(err.stack); // added
+}); // added
+
+*/
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
