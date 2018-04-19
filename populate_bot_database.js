@@ -170,7 +170,7 @@ function createBots(cb) {
           function(callback) {
             bot_basicCreate(
                 'Glyphost-Gabi',
-                'description_lalala2',
+                'In the making.',
                 'notThere',
                 '535007d74377e1f9e98b6c3ebd5405b6',
                 'dev_token_test2',
