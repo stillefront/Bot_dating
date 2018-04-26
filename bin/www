@@ -21,10 +21,6 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-//socket add
-//var io = require("socket.io").listen(server);
-//take function from controller socketServer
-//socketServer(io);
 
 //socket.io alternative test
 
@@ -100,3 +96,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+module.exports = server

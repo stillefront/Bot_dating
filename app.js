@@ -9,6 +9,9 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var bot = require('./routes/bot'); //import routes for bot area of site
 var socket = require ('./socket/socket'); //import socket server side 
+//var botmaster = require ('./botmaster/botmaster'); //import botmaster 
+
+//testing purpose
 
 var app = express();
 app.io = require('socket.io')();
@@ -16,22 +19,14 @@ app.io = require('socket.io')();
 socket(app.io); //connect socket.io to the app
 
 // this is the TEMPORAL connection botmaster. It needs to be moved in a seperate folder
-const Botmaster = require('botmaster');
-const SocketioBot = require('botmaster-socket.io');
 
-console.log(app.server);
+
+
 
 /*
-const botmaster = new Botmaster({
-  server,
-});
-
-
-
-// this thing also needs to be moved 
 const socketioSettings = {
   id: 'SOME_BOT_ID_OF_YOUR_CHOOSING',
-  server: botmaster.server, // this is required for socket.io. You can set it to another node server object if you wish to. But in this example, we will use the one created by botmaster under the hood
+  server: server, // this is required for socket.io. You can set it to another node server object if you wish to. But in this example, we will use the one created by botmaster under the hood 
 };
 
 const socketioBot = new SocketioBot(socketioSettings);
@@ -44,11 +39,6 @@ botmaster.use({
     return bot.reply(update, 'Hello world!');
   }
 });
-
-botmaster.on('error', (bot, err) => { // added
-  console.log(err.stack); // added
-}); // added
-
 */
 
 //Set up mongoose connection
