@@ -1,5 +1,17 @@
 #! /usr/bin/env node
 
+
+/*
+Login data for mlab.com
+account: Metadating
+psw: metadating2018
+email: aljosa.zidan@gmail.com
+
+MongoDB Deployment
+user: medatading
+psw: metadating2018
+mongodb://metadating:metadating2018@ds235181.mlab.com:35181/ibm_bots
+*/
 console.log('This script populates bots to your database. Specified database as argument - e.g.: node populate_bot_database mongodb://metadating:metadating2018@ds235181.mlab.com:35181/ibm_bots');
 
 // Get arguments passed on command line

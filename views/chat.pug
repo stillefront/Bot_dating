@@ -5,7 +5,13 @@ block content
     p.text-center= title
 
     .chat
-        .chat-box
+        .chat-header
+        #messages
+        .chat-input
+            form(action="")
+                input#m(autocomplete="off" placeholder="Verfasse eine Nachricht...")
+                button
+                input#stop(type="button" value="STOP!")
     
     .chat-user
         form.form-inline#form-chat(action="")
