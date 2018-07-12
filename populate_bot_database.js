@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-console.log('This script populates bots to your database. Specified database as argument - e.g.: node populate_bot_database mongodb://metadating_admin:Bothoch2@ds235388.mlab.com:35388/chatbot_metadating');
+console.log('This script populates bots to your database. Specified database as argument - e.g.: node populate_bot_database mongodb://metadating:metadating2018@ds235181.mlab.com:35181/ibm_bots');
 
 // Get arguments passed on command line
 var userArgs = process.argv.slice(2);
@@ -22,14 +22,14 @@ mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection 
 var bots = []
 
 
-function bot_basicCreate(name, description, image_path, auth_token, dev_token, date_created, cb) {
+function bot_basicCreate(name, description, image_path, workspace_id_token, username_token, password_token, cb) {
     bot_basicdetail = {
         name:name, 
         description:description, 
-        image_path:image_path, 
-        auth_token:auth_token,
-        dev_token:dev_token,
-        date_created:date_created       
+        image_path:image_path,
+        workspace_id_token:workspace_id_token, 
+        username_token:username_token,
+        password_token:password_token,    
     }
     var bot_basic = new Bot_basic(bot_basicdetail); 
 
@@ -48,136 +48,114 @@ function createBots(cb) {
     async.parallel([
         function(callback) {
             bot_basicCreate(
-                'Victoria Bach',
-                'Medizinstudentin / film-lover / Wanderlust / Kick-Boxing / Berlin, 25, 170 groß und abenteuerlustig',
-                'victoria_bach',
-                '78ae1fec4ace101bf37f56a82788ec53',
-                'dev_token_test1',
-                '2018-02-15',
+                'Heidi Klum',
+                'description',
+                'rachel_rationality',
+                'fa73acd9-16d4-42cb-935f-d0b13a25395d',
+                '0d5046eb-cdff-4aaf-812c-061f7d396d0d',
+                'cIVuLdIRCO4s',
                 callback
                 );
           },
           function(callback) {
             bot_basicCreate(
-                'Ralf Rosenthal',
-                '32, Bernau, leidenschaftlicher Fachmann für Orthopädische Fußeinlagen, 180cm groß & offen für alles und schöne Füße ;-)',
-                'ralf_rosenthal',
-                '64928745850c378383b8db61a027150b',
-                'dev_token_test2',
-                '2018-02-15',
+                'Lisa',
+                'description',
+                'rachel_rationality',
+                '65719630-1501-4db2-95db-0448295faabf',
+                'u54b3e159-42a3-439b-9829-db3ca57d3f47',
+                'DRMhV1QoPcoY',
                 callback
                 );
           },
           function(callback) {
             bot_basicCreate(
-                'Bob',
-                'Bob ist ein junger, aufstrebender und nerdiger Charakter. Er hat auf der beruflichen Seite sehr viel Erfolg - leider sieht es im Liebesleben ganz anders aus...',
-                'bob',
-                'c7d5a99817fc526df4443168538f6e56',
-                'dev_token_test2',
-                '2018-02-15',
+                'Ronny',
+                'description',
+                'rachel_rationality',
+                '1b324ef6-ef3d-4d08-a06c-46372e5d2704',
+                'fa7f6efe-38fc-4737-aebb-b315caa531b7',
+                'Y8MBWDQZ6eNX',
                 callback
                 );
           },
           function(callback) {
             bot_basicCreate(
-                'Alice von Wunderland ',
-                'Alice (35 Jahre) ist eine erfolgreiche, selbstbewusste Geschäftsfrau und nach vielen unglücklichen Affären nun auf der Suche nach einem geeigneten Vater für ihr Wunschkind.',
-                'alice_von_wunderland',
-                '3ec0d3d5c506330678f855d8db5d2037',
-                'dev_token_test2',
-                '2018-02-15',
+                'Anna Koslova',
+                'description',
+                'rachel_rationality',
+                'edbc1c7b-fd3a-4d78-b2d4-0ba1b7430924',
+                '0a6e9f76-99cc-4f03-882f-8d41455b295b',
+                '2GS8iKZ2Ycrc',
                 callback
                 );
           },  
           function(callback) {
             bot_basicCreate(
-                'Patricia Bait',
-                '30 Jahre alt, männlich verheiratet aber zur Zeit unglücklich . Einzelkind, hat einen guten Draht zu seinen Eltern. Wohnt mit seiner Frau zusammen in einer verglasten Villa, hat viele Designermöbel, exklusive, stylische Einrichtung. sehr reich. sammelt exotische, ausgestopfte Tiere',
-                'patricia_bait',
-                '31db0dac0d11964234072eda86449c23',
-                'dev_token_test2',
-                '2018-02-15',
-                callback
-                );
-          },
-          function(callback) {
-            bot_basicCreate(
-                'Patrick Bateman',
-                'Patrick Bateman (30) ist sehr erfolgreich und steinreich. Er ist verheiratet, aber unglücklich. Die Liebe ist leider verwelkt. Er wohnt mit seiner Frau in einer verglasten, exklusiven Villa. Er sammelt exotische, ausgestopfte Tiere, von denen er die meisten selbst erlegt hat.',
-                'patrick_bateman',
-                'b57305b1f5c2cb1f7027a298e3a63f0d',
-                'dev_token_test2',
-                '2018-02-15',
-                callback
-                );
-          },
-          function(callback) {
-            bot_basicCreate(
-                'David Dream',
-                'Sehr offen und gesellig, neugierig, fantasievoll, unabhängig von Urteilen anderer, unkonventionell. Gerne gesellig und unter Leuten. Unterhält sich gerne und geht auf lustige Diskussionen ein. Freut sich neue Menschen kennenzulernen. Sucht nach der wahren Liebe.',
-                'david_dream',
-                '56e125353144e848713e498b73f0c3b9',
-                'dev_token_test2',
-                '2018-02-15',
-                callback
-                );
-          },
-          function(callback) {
-            bot_basicCreate(
-                'Rachel Rationality',
-                'Rachel Rationality, 22 Jahre, geboren in München, aktuell wohnhaft in Berlin. Studium der Wirtschaftsinformatik, Bachelor abgeschlossen. Sportlich aktiv, am liebsten Tennis. Politisch, wissenschaftlich, kulturell interessiert.',
+                'McMirco',
+                'description',
                 'rachel_rationality',
-                '9286815612a1ecb98de6077982e2ef12',
-                'dev_token_test2',
-                '2018-02-15',
+                '5d07c531-3021-4659-977b-07bc3ba208d7',
+                '1a118377-3a40-4047-ae6a-8123e49b7a14',
+                '4BUXVvz6TfcL',
                 callback
                 );
           },
           function(callback) {
             bot_basicCreate(
-                'Kim',
-                'Ich bin Kim 24 Jahre aus B - Lichtenberg, Girls meldet euch',
-                'kim',
-                '7ce59919b150111e38d7733164811bae',
-                'dev_token_test2',
-                '2018-02-15',
+                'DepriSchri',
+                'description',
+                'rachel_rationality',
+                '3d6f00ac-d03e-420f-8684-27b19f1a8f49',
+                '0a710bfb-43d6-4222-b136-523719300138',
+                '0RkX2wOkudS3',
                 callback
                 );
           },
           function(callback) {
             bot_basicCreate(
-                'Charlie',
-                'Ich heiße Charlie Meier und bin 22 Jahre alt. Ich wohne derzeit in Berlin und studiere Grundschullehramt, bin aber in Sauen groß geworden (gemütlicher Ort in Brandenburg). Mein liebstes Hobby ist Nail Art, ich habe einen YouTube Channel. Ich bin Single und warte noch auf den Traumprinzen ;)',
-                'charlie',
-                'c9183f20ef965f07e82c05b5a6157428',
-                'dev_token_test2',
-                '2018-02-15',
+                'Botilda',
+                'description',
+                'rachel_rationality',
+                '104a6faf-f448-49e9-aeff-cd90f9f53637',
+                'cf4fc36d-f378-4c96-bf5f-5e64b5925c4a',
+                'sl5Z4iMCMBgN',
                 callback
                 );
           },
           function(callback) {
             bot_basicCreate(
-                'Habibo',
-                'Ich heiße Charlie Meier und bin 22 Jahre alt. Ich wohne derzeit in Berlin und studiere Grundschullehramt, bin aber in Sauen groß geworden (gemütlicher Ort in Brandenburg). Mein liebstes Hobby ist Nail Art, ich habe einen YouTube Channel. Ich bin Single und warte noch auf den Traumprinzen ;)',
-                'notThere',
-                '035c15705d5a22f4ed49b32092ffdbe9',
-                'dev_token_test2',
-                '2018-02-15',
+                'ufo361',
+                'description',
+                'rachel_rationality',
+                '40822cd7-c3c3-459e-a6e1-93367447ee91',
+                'b30929f7-ac03-4a09-88e3-11280fcdbefa',
+                'g3iv7VvqvgJX',
                 callback
                 );
           },
           function(callback) {
             bot_basicCreate(
-                'Glyphost-Gabi',
-                'In the making.',
-                'notThere',
-                '535007d74377e1f9e98b6c3ebd5405b6',
-                'dev_token_test2',
-                '2018-02-15',
+                'Zuckerberg',
+                'description',
+                'rachel_rationality',
+                '9d36896e-ef74-4448-8945-d2d83a727a78',
+                '51bf7895-89fc-472b-91c8-610764ad5c8b',
+                'mlhsYkuuWDEF',
                 callback
                 );
-          },                                      
+          },
+          function(callback) {
+            bot_basicCreate(
+                'Bärbel',
+                'description',
+                'rachel_rationality',
+                '6d09b318-ec00-461b-929c-feb250e0eaca',
+                '4d4807fc-a562-4163-8b3f-f369e86c7519',
+                'r15yAUygkZL4',
+                callback
+                );
+          },                                   
     // optional callback
     ],
     cb);

@@ -43,7 +43,7 @@ botmaster.use({
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://metadating_admin:Bothoch2@ds235388.mlab.com:35388/chatbot_metadating';
+var mongoDB = 'mongodb://metadating:metadating2018@ds235181.mlab.com:35181/ibm_bots';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
