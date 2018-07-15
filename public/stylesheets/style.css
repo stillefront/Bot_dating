@@ -1,13 +1,12 @@
-html {
-  height: 100%;
-}
 
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 100%;
-}
 
+* { 
+	margin: 0; 
+	padding: 0; 
+	box-sizing: border-box; 
+	font-family: 'Roboto', sans-serif;
+}
+      
 a {
   color: #00B7FF;
 }
@@ -46,36 +45,8 @@ h5 {
   background-color: yellow;
 }
 
-#chat {
-  position: fixed;
-  top: 90%;
-  width: 95%;
-}
 
-#m {
-  width: 85%;
-}
 
-.chat {
-  width: 100%;
-  height: 85%;
-  border: solid 1px #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  display: block;
-  
-}
-
-.chat-box {
-  height: 100%;
-  max-width: 100%;
-  
-  overflow-y: auto;
-}
-
-.chat-user {
-  margin-top: 10px;
-}
 
 
 /* custom scrolbarrr!*/

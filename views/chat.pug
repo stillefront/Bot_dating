@@ -2,17 +2,12 @@ extends layout
 
 block content
 
-    p.text-center= title
-
     .chat
         .chat-header
         #messages
         .chat-input
             form(action="")
                 input#m(autocomplete="off" placeholder="Verfasse eine Nachricht...")
-                button
+                button klick 
                 input#stop(type="button" value="STOP!")
     
-    .chat-user
-        form.form-inline#form-chat(action="")
-            button.btn.btn-default(type="submit", name="button", ) Stop   
