@@ -5,6 +5,8 @@ var app = express();
 
 //var recastai = require('recastai').default;
 
+//var chatStart = require('../controllers/chatStart.js');
+
 var people = {};
 var namebot1 = {};
 var	namebot2 = {};
@@ -36,6 +38,22 @@ namebot1[socket.id] = "bot1";//names.namebot1;
 //password2 = names.password2;
 //workspace_id2 = names.workspace_id2;
 namebot2[socket.id] = "bot2" //names.namebot2;
+
+exports.searchForBothToken = function (req, res, next) {
+    app.locals.bot1 = req.body.bot1;
+    app.locals.bot2 = req.body.bot2;
+
+    //search for the Token from bot1
+    Bot_basic.findOne({ 'name': app.locals.bot1 }, 'name image_path workspace_id_token username_token password_token', function (err, bot_1) {
+            if (err) return handleError(err);
+            console.log("Der Token von " + bot_1.name + " ist " + bot_1.password_token);
+          });
+    //search for the Token from bot2
+    Bot_basic.findOne({ 'name': app.locals.bot2 }, 'name image_path workspace_id_token username_token password_token', function (err, bot_2) {
+            if (err) return handleError(err);
+            console.log("Der Token von " + bot_2.name + " ist " + bot_2.workspace_id_token);
+          });      
+}
 
 //escaping our json-strings (https://stackoverflow.com/questions/4253367/how-to-escape-a-json-string-containing-newline-characters-using-javascript#4253415)
 String.prototype.escapeSpecialChars = function() {
@@ -70,10 +88,12 @@ function socket(io) {
 	var bot_id_1 = (socket.id + '_bot1');
 	var	bot_id_2 = (socket.id + '_bot2');
 
-	console.log(socket.id + ' connected to room ' + room ); //for debuging in console
+    console.log(socket.id + ' connected to room ' + room ); //for debuging in console
+    
 
     // experimental end
-    
+
+
     bot_array[bot_id_1] = new watson.AssistantV1({
         username: "0d5046eb-cdff-4aaf-812c-061f7d396d0d", //username1,
         password: "cIVuLdIRCO4s", //password1, 
