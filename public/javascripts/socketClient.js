@@ -96,7 +96,7 @@ $(document).ready(function(){
     
     // Party starts here
         var socket = io();
-        var socketBot1
+
     
         socket.on('message', function(who, data){
             data = JSON.parse(data);
@@ -128,9 +128,9 @@ $(document).ready(function(){
             var data = {
                 "id": socket.id,
                 "content": $('#m').val(),
-                "type": 'userMessage'
+                "type": 'userMessage',
+                "userId": Cookies.get('userId'),
             };
-            console.log("What is the name of the first Bot? " + socketBot1)
             socket.send(JSON.stringify(data)); //socket.send sends messages which are received with the 'message' event
             $('#m').val('');
             return false;
@@ -139,9 +139,8 @@ $(document).ready(function(){
         $('#stop').click(function(){
             $('#messages').append('<p class="sysmessage">' + 'Verbindung getrennt. ' + '</p>');
             smoothscroll();
-    
+
             socket.disconnect(); // disconnect and stop chat!
-    
         });
     
     // Extra: möglichkeit für weiteres Account mit weiteren sets für workspace ids
@@ -169,8 +168,6 @@ $(document).ready(function(){
     
         });
     
-    
-        
     }); // end jQuery
 
 

@@ -3,6 +3,10 @@ var watson = require('watson-developer-cloud');
 var express = require('express');
 var app = express();
 
+var Bot_basic = require ('../models/bot_basic');
+var User_sessions_informations = require ('../models/user_sessions_informations');
+
+
 //var recastai = require('recastai').default;
 
 //var chatStart = require('../controllers/chatStart.js');
@@ -55,6 +59,8 @@ String.prototype.escapeSpecialChars = function () {
 function socket(io) {
 
     io.on('connection', function (socket) {
+
+
         console.log('a user connected lala');
         socket.on('new message', function (msg) {
             var data = {
@@ -73,7 +79,6 @@ function socket(io) {
         var bot_id_2 = (socket.id + '_bot2');
 
         console.log(socket.id + ' connected to room ' + room); //for debuging in console
-
 
         // experimental end
 
@@ -123,6 +128,25 @@ function socket(io) {
         socket.on('message', function (message) {
             message = JSON.parse(message);
 
+            console.log("message_json_esc: parse " + message.userId);
+
+            User_sessions_informations.findOne({ 'user_id': message.userId }, 'bot1 bot2', function (err, client) {
+                if (err) return handleError(err);
+                console.log("Die Bots heißen" + client.bot1 + " ist " + client.bot2);
+
+                Bot_basic.findOne({ 'name': client.bot1 }, 'name image_path workspace_id_token username_token password_token', function (err, bot_1) {
+                    if (err) return handleError(err);
+                    console.log("Der Token von " + bot_1.name + " ist " + bot_1.workspace_id_token);
+                  });
+
+                  Bot_basic.findOne({ 'name': client.bot2 }, 'name image_path workspace_id_token username_token password_token', function (err, bot_2) {
+                    if (err) return handleError(err);
+                    console.log("Der Token von " + bot_2.name + " ist " + bot_2.workspace_id_token);
+                    return bot_2
+                  });          
+
+                return client
+              });
             var message_json = JSON.stringify(message);
             var message_json_esc = message_json.escapeSpecialChars();
 
@@ -130,9 +154,8 @@ function socket(io) {
             socket.emit('message', people[socket.id], message_json_esc); // send to client
             socket.to(room).emit('message', people[socket.id], message_json_esc); // send to room
 
-            console.log("app.locals.bot1" + app.locals.bot1);
-
             console.log("message_json_esc: " + message_json_esc);
+
             //console.log("bot_id_1:" + bot_array[bot_id_1])
 
             bot_array[bot_id_1].message({

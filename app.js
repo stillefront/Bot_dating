@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var bot = require('./routes/bot'); //import routes for bot area of site
 var socket = require ('./socket/socket'); //import socket server side 
+//var cookieSession = require('cookie-session')
 //var botmaster = require ('./botmaster/botmaster'); //import botmaster 
 
 //testing purpose
@@ -66,7 +67,15 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
+/*
+//for loging the client session
+app.use(cookieSession({
+  name: 'session',
+  keys: [ "secret keys" ],
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+*/
 app.use('/', index);
 app.use('/users', users);
 app.use('/bot', bot); //add bot route to the middleware chain
@@ -88,5 +97,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//for loging the client session
+
 
 module.exports = app;
