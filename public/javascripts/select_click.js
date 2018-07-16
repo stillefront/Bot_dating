@@ -1,9 +1,10 @@
+$( document ).ready(function() {
+  console.log( "ready!" );
 
 var counter = 0;
 var bot_array =[0,0];
+window.socketBot1
 
-$( document ).ready(function() {
-  console.log( "ready!" );
 
 // if you click on bots
   $( ".klick" ).on("click", function() {
@@ -57,12 +58,14 @@ $( document ).ready(function() {
       console.log("Send Bot information to the server and start the chat betwen me and a Bot!");  
       $.post( "/bot/chat_onebot", { bot1: bot_array[0]});
       window.location.href = "/bot/chat_onebot";
+      socketBot1 = bot_array[0]
     }
 
     if (counter == 2) {
     console.log("Send Bot information to the server and start chat between two Bots!");
     $.post( "/bot/chat", { bot1: bot_array[0], bot2: bot_array[1] } );
     window.location.href = "/bot/chat";
+    socketBot1 = bot_array[0]
     }
     else {
       console.log("not working!");

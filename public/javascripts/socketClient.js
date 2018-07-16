@@ -96,6 +96,7 @@ $(document).ready(function(){
     
     // Party starts here
         var socket = io();
+        var socketBot1
     
         socket.on('message', function(who, data){
             data = JSON.parse(data);
@@ -129,7 +130,7 @@ $(document).ready(function(){
                 "content": $('#m').val(),
                 "type": 'userMessage'
             };
-            console.log("form submit sends Data to message event")
+            console.log("What is the name of the first Bot? " + socketBot1)
             socket.send(JSON.stringify(data)); //socket.send sends messages which are received with the 'message' event
             $('#m').val('');
             return false;
