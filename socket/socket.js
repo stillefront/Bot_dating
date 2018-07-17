@@ -27,21 +27,28 @@ var username2
 var password2
 var workspace_id2
 
+var bot_id_1
+var bot_id_2
+
+var clientSearch = {};
+var botAuth1 = {}
+var botAuth2 = {}
+
 //for context updating 
 var context_bot1
 var context_bot1_update
 var context_bot2
 var context_bot2_update
 
-people[socket.id] = "aljosa";//names.nickname;
+//people[socket.id] = "aljosa";//names.nickname;
 //username1 = names.username1;
 //password1 = names.password1;
 //workspace_id1 = names.workspace_id1;
-namebot1[socket.id] = "bot1";//names.namebot1;
+//namebot1[socket.id] = "bot1";//names.namebot1;
 //username2 = names.username2;
 //password2 = names.password2;
 //workspace_id2 = names.workspace_id2;
-namebot2[socket.id] = "bot2" //names.namebot2;
+//namebot2[socket.id] = "bot2" //names.namebot2;
 
 //escaping our json-strings (https://stackoverflow.com/questions/4253367/how-to-escape-a-json-string-containing-newline-characters-using-javascript#4253415)
 String.prototype.escapeSpecialChars = function () {
@@ -60,6 +67,17 @@ function socket(io) {
 
     io.on('connection', function (socket) {
 
+                // experimental
+        var room = ('room_' + socket.id); // generate dynamic room name
+        socket.join(room);
+
+        bot_id_1 = (socket.id + '_bot1');
+        bot_id_2 = (socket.id + '_bot2');
+
+        console.log(socket.id + ' connected to room ' + room); //for debuging in console
+
+        // experimental end
+
 
         console.log('a user connected lala');
         socket.on('new message', function (msg) {
@@ -71,32 +89,7 @@ function socket(io) {
 
             io.emit('chat message', data);
         });
-        // experimental
-        var room = ('room_' + socket.id); // generate dynamic room name
-        socket.join(room);
 
-        var bot_id_1 = (socket.id + '_bot1');
-        var bot_id_2 = (socket.id + '_bot2');
-
-        console.log(socket.id + ' connected to room ' + room); //for debuging in console
-
-        // experimental end
-
-
-        bot_array[bot_id_1] = new watson.AssistantV1({
-            username: "0d5046eb-cdff-4aaf-812c-061f7d396d0d", //username1,
-            password: "cIVuLdIRCO4s", //password1, 
-            version: '2018-02-16'
-        });
-
-        console.log("Das ist der Name des ersten Bots" + bot_array[bot_id_1])
-
-        //Watson deklarierung bot
-        bot_array[bot_id_2] = new watson.AssistantV1({
-            username: "54b3e159-42a3-439b-9829-db3ca57d3f47", //username2,
-            password: "DRMhV1QoPcoY",//password2,
-            version: '2018-02-16'
-        });
 
         socket.on('disconnect', function () {
             console.log('user disconnected');
@@ -125,28 +118,51 @@ function socket(io) {
 
         });
 
-        socket.on('message', function (message) {
+        socket.on('message', async function (message) {
             message = JSON.parse(message);
 
             console.log("message_json_esc: parse " + message.userId);
 
-            User_sessions_informations.findOne({ 'user_id': message.userId }, 'bot1 bot2', function (err, client) {
-                if (err) return handleError(err);
-                console.log("Die Bots heißen" + client.bot1 + " ist " + client.bot2);
+            async function getClientInfo() {
+                clientSearch = await User_sessions_informations.findOne({ 'user_id': message.userId },).exec();                
+                console.log("getClientInfo function gives" + clientSearch);
+            }
 
-                Bot_basic.findOne({ 'name': client.bot1 }, 'name image_path workspace_id_token username_token password_token', function (err, bot_1) {
-                    if (err) return handleError(err);
-                    console.log("Der Token von " + bot_1.name + " ist " + bot_1.workspace_id_token);
-                  });
+            async function getBot1Auth() {
+                botAuth1 = await Bot_basic.findOne({ 'name': clientSearch.bot1 },).exec();
+                console.log("getBot1Auth function gives: " + botAuth1);
+            }
 
-                  Bot_basic.findOne({ 'name': client.bot2 }, 'name image_path workspace_id_token username_token password_token', function (err, bot_2) {
-                    if (err) return handleError(err);
-                    console.log("Der Token von " + bot_2.name + " ist " + bot_2.workspace_id_token);
-                    return bot_2
-                  });          
+            async function getBot2Auth() {
+                botAuth2 = await Bot_basic.findOne({ 'name': clientSearch.bot2 },).exec();
+                //console.log("getBot2Auth function gives: " + botAuth2);
+            }
+             
+            await getClientInfo();
+            await getBot1Auth();
+            await getBot2Auth();        
 
-                return client
-              });
+            console.log("what happend first?");
+            bot_array[bot_id_1] = new watson.AssistantV1({
+                username: botAuth1.username_token, //"0d5046eb-cdff-4aaf-812c-061f7d396d0d", //username1,
+                password: botAuth1.password_token,//"cIVuLdIRCO4s", //password1, 
+                version: '2018-02-16'
+            });
+            /*
+            username: botAuth1.username_token, //"54b3e159-42a3-439b-9829-db3ca57d3f47", //username2,
+            password: botAuth1.password_token, //"DRMhV1QoPcoY",//password2,
+            */
+            //Watson deklarierung bot
+            console.log("credentials for " + botAuth2.name + " are " + botAuth2.username_token)
+            bot_array[bot_id_2] = new watson.AssistantV1({
+                username: botAuth2.username_token,//"54b3e159-42a3-439b-9829-db3ca57d3f47", //username2,
+                password: botAuth2.password_token,//"DRMhV1QoPcoY",//password2,
+                version: '2018-02-16'
+            });
+
+
+            console.log("what is the bot1 token?" + botAuth1.workspace_id_token);
+
             var message_json = JSON.stringify(message);
             var message_json_esc = message_json.escapeSpecialChars();
 
@@ -156,10 +172,11 @@ function socket(io) {
 
             console.log("message_json_esc: " + message_json_esc);
 
-            //console.log("bot_id_1:" + bot_array[bot_id_1])
+            console.log("wann kommt man hier hin? Und funktioniert das? " + botAuth1.name )
 
             bot_array[bot_id_1].message({
-                workspace_id: "fa73acd9-16d4-42cb-935f-d0b13a25395d", //workspace_id1,
+                workspace_id: botAuth1.workspace_id_token, //"fa73acd9-16d4-42cb-935f-d0b13a25395d", //workspace_id1,
+                context: context_bot1_update,
                 input: { 'text': JSON.stringify(message.content) }
 
             }, function (err, response) {
@@ -193,10 +210,10 @@ function socket(io) {
             message = JSON.parse(data);
 
             context_bot2_update = context_bot2
-            console.log(context_bot2_update)
+            console.log("context von Bot2: " + context_bot2_update)
 
             bot_array[bot_id_2].message({
-                workspace_id: "65719630-1501-4db2-95db-0448295faabf", //workspace_id2, //workspace_id2,
+                workspace_id: botAuth2.workspace_id_token, //"65719630-1501-4db2-95db-0448295faabf", //workspace_id2, //workspace_id2,
                 context: context_bot2_update,
                 input: { 'text': JSON.stringify(message.content) }
 
@@ -224,10 +241,10 @@ function socket(io) {
             message = JSON.parse(data);
 
             context_bot1_update = context_bot1;
-            console.log(context_bot1_update)
+            console.log("context von Bot1: " + context_bot1_update)
 
             bot_array[bot_id_1].message({
-                workspace_id: "fa73acd9-16d4-42cb-935f-d0b13a25395d", //workspace_id1,
+                workspace_id: botAuth1.workspace_id_token, //"fa73acd9-16d4-42cb-935f-d0b13a25395d", //workspace_id1,
                 context: context_bot1_update,
                 input: { 'text': JSON.stringify(message.content) }
 
