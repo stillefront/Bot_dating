@@ -96,11 +96,10 @@ $(document).ready(function(){
     
     // Party starts here
         var socket = io();
-
     
         socket.on('message', function(who, data){
             data = JSON.parse(data);
-            console.log("Message data von server Bot zu client" + data.type)
+            console.log("Message data von server Bot zu client" + data.botPhoto)
     
     
             if (data.type == 'botAnswer') {

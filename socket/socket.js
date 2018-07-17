@@ -184,13 +184,15 @@ function socket(io) {
                     //console.log(typeof JSON.stringify(response.output.text))
                     botdata = {
                         content: response.output.text,
-                        type: 'botAnswer'
+                        type: 'botAnswer',
+                        botPhoto: botAuth1.image_path
                     }
                 //console.log("erster versuch: " + botdata.content)
                 //console.log("Ist das der context?: " + JSON.stringify(botdata.context))
 
                 var botdata_json = JSON.stringify(botdata);
                 var botdata_json_esc = botdata_json.escapeSpecialChars();
+                
 
                 socket.emit('message', botAuth1.name, botdata_json_esc); // let bot respond in client
                 socket.to(room).emit('message', botAuth1.name, botdata_json_esc); // let bot respond to room
@@ -220,7 +222,8 @@ function socket(io) {
                     //console.log(JSON.stringify(response, null, 2));
                     botdata = {
                         content: response.output.text,
-                        type: "botAnswer2"
+                        type: "botAnswer2",
+                        botPhoto: botAuth2.image_path
                     }
                 context_bot2 = response.context;
                 var botdata_json = JSON.stringify(botdata);
@@ -251,7 +254,8 @@ function socket(io) {
                     //console.log(JSON.stringify(response, null, 2));
                     botdata = {
                         content: response.output.text,
-                        type: "botAnswer"
+                        type: "botAnswer",
+                        botPhoto: botAuth1.image_path
                     }
 
                 context_bot1 = response.context;
