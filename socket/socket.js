@@ -148,10 +148,7 @@ function socket(io) {
                 password: botAuth1.password_token,//"cIVuLdIRCO4s", //password1, 
                 version: '2018-02-16'
             });
-            /*
-            username: botAuth1.username_token, //"54b3e159-42a3-439b-9829-db3ca57d3f47", //username2,
-            password: botAuth1.password_token, //"DRMhV1QoPcoY",//password2,
-            */
+
             //Watson deklarierung bot
             console.log("credentials for " + botAuth2.name + " are " + botAuth2.username_token)
             bot_array[bot_id_2] = new watson.AssistantV1({
@@ -165,7 +162,6 @@ function socket(io) {
 
             var message_json = JSON.stringify(message);
             var message_json_esc = message_json.escapeSpecialChars();
-
 
             socket.emit('message', people[socket.id], message_json_esc); // send to client
             socket.to(room).emit('message', people[socket.id], message_json_esc); // send to room
@@ -196,8 +192,8 @@ function socket(io) {
                 var botdata_json = JSON.stringify(botdata);
                 var botdata_json_esc = botdata_json.escapeSpecialChars();
 
-                socket.emit('message', namebot1[socket.id], botdata_json_esc); // let bot respond in client
-                socket.to(room).emit('message', namebot1[socket.id], botdata_json_esc); // let bot respond to room
+                socket.emit('message', botAuth1.name, botdata_json_esc); // let bot respond in client
+                socket.to(room).emit('message', botAuth1.name, botdata_json_esc); // let bot respond to room
 
                 //console.log(botdata.content)
             });
@@ -230,8 +226,8 @@ function socket(io) {
                 var botdata_json = JSON.stringify(botdata);
                 var botdata_json_esc = botdata_json.escapeSpecialChars();
 
-                socket.emit('message', namebot2[socket.id], botdata_json_esc); // let bot respond
-                socket.to(room).emit('message', namebot1[socket.id], botdata_json_esc); // let bot respond
+                socket.emit('message', botAuth2.name, botdata_json_esc); // let bot respond
+                socket.to(room).emit('message', botAuth2.name, botdata_json_esc); // let bot respond
             });
         });
 
@@ -263,8 +259,8 @@ function socket(io) {
                 var botdata_json = JSON.stringify(botdata);
                 var botdata_json_esc = botdata_json.escapeSpecialChars();
 
-                socket.emit('message', namebot1[socket.id], botdata_json_esc); // let bot respond
-                socket.to(room).emit('message', namebot1[socket.id], botdata_json_esc); // let bot respond
+                socket.emit('message', botAuth1.name, botdata_json_esc); // let bot respond
+                socket.to(room).emit('message', botAuth1.name, botdata_json_esc); // let bot respond
             });
         })
 

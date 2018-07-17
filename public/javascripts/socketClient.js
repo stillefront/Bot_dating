@@ -30,7 +30,7 @@ $(document).ready(function(){
     
     // this calculates the time that the Bot needs to write a msg 
     function msgSizeTimer(msgContent) {
-        let awrageCharactersPerMinute = 750; // http://typefastnow.com/average-typing-speed
+        let awrageCharactersPerMinute = 950; // http://typefastnow.com/average-typing-speed
         let typingTime = Math.floor((JSON.stringify(msgContent).length * 1000) / (awrageCharactersPerMinute/60)); 
         return typingTime
     };
