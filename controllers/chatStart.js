@@ -23,18 +23,11 @@ exports.searchForBothToken = function (req, res, next) {
         console.log("ka zaj?"+ req.body.userId);
 
         userData = { user_id: req.body.userId, bot1: app.locals.bot1, bot2: app.locals.bot2 }
-/*
-        Bot_basic.insertOne(userData, function(err, res) {
-                if(err) throw err;
-                console.log("hat funktioniert mit mongo");
-        })
-*/
+
         User_sessions_informations.create(userData, function (err, User_sessions_informations) {
                 if (err) return handleError(err);
                 // saved!
               });
-
-        //User_sessions_information.save({ _id: 100, name: "water", image_path: 30 })
     
         //search for the Token from bot1
         Bot_basic.findOne({ 'name': app.locals.bot1 }, 'name image_path workspace_id_token username_token password_token', function (err, bot_1) {
