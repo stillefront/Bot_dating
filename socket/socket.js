@@ -6,11 +6,6 @@ var app = express();
 var Bot_basic = require ('../models/bot_basic');
 var User_sessions_informations = require ('../models/user_sessions_informations');
 
-
-//var recastai = require('recastai').default;
-
-//var chatStart = require('../controllers/chatStart.js');
-
 var people = {};
 var namebot1 = {};
 var namebot2 = {};
@@ -26,6 +21,8 @@ var workspace_id1
 var username2
 var password2
 var workspace_id2
+
+var botLoginObjectArray
 
 var bot_id_1
 var bot_id_2
@@ -156,7 +153,6 @@ function socket(io) {
                 password: botAuth2.password_token,//"DRMhV1QoPcoY",//password2,
                 version: '2018-02-16'
             });
-
 
             console.log("what is the bot1 token?" + botAuth1.workspace_id_token);
 

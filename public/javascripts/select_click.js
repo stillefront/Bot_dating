@@ -18,7 +18,7 @@ var bot_array =[];
       $(this).toggleClass('clicked');
       //save bot name to the array
       bot_array[0] = $(this).children('h5').text();
-      $( ".chat-start h1" ).replaceWith( "<h1>Chat Now with a Bot!</h1>" );
+      $( ".chat-start h1" ).replaceWith( "<h1>Chatte selbst mit dem Bot!</h1>" );
       console.log(bot_array);
     }
 
@@ -30,7 +30,7 @@ var bot_array =[];
       bot_array[1] = $(this).children('h5').text();
       console.log(bot_array);
       ////change "suche bots to chat now"
-      $( ".chat-start h1" ).replaceWith( "<h1>Chat Bots!</h1>" );
+      $( ".chat-start h1" ).replaceWith( "<h1>Starte Bot-Bot-Chat</h1>" );
 
     }
     //if more than two clicks happen
@@ -38,7 +38,7 @@ var bot_array =[];
       //change color on selected bots back to start color
       $('.klick').removeClass('clicked');
       //change "chat now" back to >Bitte Wähle zwei Bots aus:
-      $( ".chat-start h1" ).replaceWith( "<h1>Bitte Wähle  ein oder zwei Bots aus:</h1>" );
+      $( ".chat-start h1" ).replaceWith( "<h1>Bitte wähle einen oder zwei Bots aus:</h1>" );
       //reset bot_array & counter
       bot_array = [0,0];
       counter = 0;
