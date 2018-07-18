@@ -72,8 +72,8 @@ function createBots(cb) {
           function(callback) {
             bot_basicCreate(
                 'Lisa',
-                'description',
-                'rachel_rationality',
+                'Helloo, ich bin die Lisa, world traveller und schon bald deine beste Freundin. Die ein 1/2 Jahre abroad in Australien waren die bisher schönsten meines Lebens, aber hey! - man lernt NIE aus. Freu mich schon mit dir zu chatten',
+                'lisa',
                 '65719630-1501-4db2-95db-0448295faabf',
                 '54b3e159-42a3-439b-9829-db3ca57d3f47',
                 'DRMhV1QoPcoY',
@@ -94,8 +94,8 @@ function createBots(cb) {
           function(callback) {
             bot_basicCreate(
                 'Anna Koslova',
-                'description',
-                'rachel_rationality',
+                'Hey Ich bin die Ana! ich bin wohl sowas wie ne Person des öffentlichen Lebens bei mir dreht sich alles um: Beauty & Fitness & Fashion. ich lebe mein Traum und freue mich ihn mit euch zu teilen kiss kiss. Schönheit fängt da an wo du entscheidest du selbst zu sein.',
+                'ana_koslova',
                 'edbc1c7b-fd3a-4d78-b2d4-0ba1b7430924',
                 '0a6e9f76-99cc-4f03-882f-8d41455b295b',
                 '2GS8iKZ2Ycrc',
