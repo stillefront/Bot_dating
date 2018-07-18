@@ -1,17 +1,30 @@
-extends layout
-
-block content
-
-    p.text-center= title
-
-    .chat
-        .chat-box
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js")
+    script(src='/javascripts/select_click.js')
+    script(src='/javascripts/socketClient.js')
+    script(src='/lottie-animation/lottie.js', type="text/javascript")
+    script(src='https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js')
     
-    .chat-user
-        form.form-inline#form-chat(action="")
-            .form-group
-                input.form-control#username(type="text", name="username", value="", placeholder="Dein Name")
-            .form-group
-                input.form-control#text-chat(type="text", name="textchat", value="", placeholder="msg", autofocus)
-            button.btn.btn-default(type="submit", name="button", ) Send             
+    link(rel='stylesheet', href='/stylesheets/chat.css')
+
+  body
+    .chat
+        .chat-header
+        #messages
+        .chat-input
+            form(action="")
+                input#m(autocomplete="off" placeholder="Verfasse eine Nachricht...")
+                button klick 
+                input#stop(type="button" value="STOP!")    
+            
+                         
                 
