@@ -97,7 +97,8 @@ $(document).ready(function(){
     // Party starts here
         var socket = io();
 
-        console.log("submit: " + socket.id);
+        //automatic start. You can manipulate the static msg in data.content
+        console.log("SocketClient is working. Sending first static 'hallo' msg to the first bot");
         var data = {
             "id": socket.id,
             "content": "hallo",
@@ -105,47 +106,28 @@ $(document).ready(function(){
             "userId": Cookies.get('userId'),
         };
         socket.send(JSON.stringify(data))
+        console.log("static msg was sent")
     
+        //msg ping pong after automatic start
         socket.on('message', function(who, data){
             data = JSON.parse(data);
-            console.log("Message data von server Bot zu client" + data.botPhoto)
-    
-    
+            console.log("Communication betwen msg sockets works")
+
             if (data.type == 'botAnswer') {
     
                 fakeItTillYouMakeIt("bot1", who, data.content, data.botPhoto, "callSecondBot", data)
-    
+                console.log(who + "send a msg")
     
             } else if (data.type == 'botAnswer2') {
     
                 fakeItTillYouMakeIt("bot2", who, data.content, data.botPhoto, "callFirstBot", data)
-    
+                console.log(who + "send a msg")
+
             } else {
-    
-                let msgStructure =  '<div class="user-msg">' + 
-                '<p class="user-msg-name">' + who + '</p>' +
-                '<p class="user-msg-text">' + data.content + '</p>' +
-                '<p class="user-msg-type">' + data.type + '</p>' +
-               '</div>';
-    
-                //$('#messages').append(msgStructure);
+                console.log("Static msg says" + data.content)
             };
         });
 
-
-        $('form').submit(function(){
-            console.log("submit: " + socket.id);
-            var data = {
-                "id": socket.id,
-                "content": $('#m').val(),
-                "type": 'userMessage',
-                "userId": Cookies.get('userId'),
-            };
-            socket.send(JSON.stringify(data)); //socket.send sends messages which are received with the 'message' event
-            $('#m').val('');
-            return false;
-        });
-    
         $('#stop').click(function(){
             $('#messages').append('<p class="sysmessage">' + 'Verbindung getrennt. ' + '</p>');
             smoothscroll();
@@ -153,32 +135,7 @@ $(document).ready(function(){
             socket.disconnect(); // disconnect and stop chat!
         });
     
-    // Extra: möglichkeit für weiteres Account mit weiteren sets für workspace ids
-        $('#setname').click(function(){
-            var data = {
-                "namebot1": $('#namebot1').val(),
-                "username1": $('#username1').val(),
-                "password1": $('#password1').val(),
-                "workspace_id1": $('#workspace_id1').val(),
-                "namebot2": $('#namebot2').val(),
-                "username2": $('#username2').val(),
-                "password2": $('#password2').val(),
-                "workspace_id2": $('#workspace_id2').val(),
-                "nickname": $('#nickname').val()
-            };
-            socket.emit("set_name", JSON.stringify(data));
-            console.log("hey" + data);
-        });
-    
-        socket.on('name_set', function(who){
-            $('#nameform').hide();
-            $('.chat').show();
-            $('#messages').append('<p class="sysmessage">' + 'Willkommen im chatbotchat, '+ who + '&nbsp;!' + '</p>');
-            smoothscroll();
-    
-        });
-    
-    }); // end jQuery
+    }); 
 
 
 
