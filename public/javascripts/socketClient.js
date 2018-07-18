@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    //This our the functions that the chat uses
+    //This are the functions that the chat uses
     
     //this is the structure for every msg from the bot
     function msgStructure(botClass, botName, botMsgContent, botPicturePath) {
@@ -15,7 +15,7 @@ $(document).ready(function(){
         return msgStructure   
     };
     
-    // This is a fake msg that shows the "is typing" chat box
+    // This is a fake msg that shows the "is typing" chat box. id lottie is the ball animation
     function msgStructureIsTyping(botClass, botName, botPicturePath ) {
         let msgStructureIsTyping =  
             '<div class="' + botClass + '-is-typing-msg">' + 
@@ -95,47 +95,49 @@ $(document).ready(function(){
     // Functions end here
     
     // Party starts here
-        var socket = io();
+    var socket = io();
 
-        //automatic start. You can manipulate the static msg in data.content
-        console.log("SocketClient is working. Sending first static 'hallo' msg to the first bot");
-        var data = {
-            "id": socket.id,
-            "content": "hallo",
-            "type": 'userMessage',
-            "userId": Cookies.get('userId'),
+    //automatic start. You can manipulate the static msg in data.content
+    console.log("SocketClient is working. Sending first static 'hallo' msg to the first bot");
+    var data = {
+        "id": socket.id,
+        "content": "hallo",
+        "type": 'userMessage',
+        "userId": Cookies.get('userId'),
+    };
+    socket.send(JSON.stringify(data))
+    console.log("static msg was sent")
+    
+    //msg ping pong after automatic start
+    socket.on('message', function(who, data){
+        data = JSON.parse(data);
+        console.log("Communication betwen msg sockets works")
+
+        if (data.type == 'botAnswer') {
+    
+            fakeItTillYouMakeIt("bot1", who, data.content, data.botPhoto, "callSecondBot", data)
+            console.log(who + "send a msg")
+    
+        } else if (data.type == 'botAnswer2') {
+    
+            fakeItTillYouMakeIt("bot2", who, data.content, data.botPhoto, "callFirstBot", data)
+            console.log(who + "send a msg")
+
+        } else {
+            console.log("Static msg says " + data.content)
         };
-        socket.send(JSON.stringify(data))
-        console.log("static msg was sent")
-    
-        //msg ping pong after automatic start
-        socket.on('message', function(who, data){
-            data = JSON.parse(data);
-            console.log("Communication betwen msg sockets works")
+    });
 
-            if (data.type == 'botAnswer') {
-    
-                fakeItTillYouMakeIt("bot1", who, data.content, data.botPhoto, "callSecondBot", data)
-                console.log(who + "send a msg")
-    
-            } else if (data.type == 'botAnswer2') {
-    
-                fakeItTillYouMakeIt("bot2", who, data.content, data.botPhoto, "callFirstBot", data)
-                console.log(who + "send a msg")
+    $('.go-back-button').click(function(){
+        socket.disconnect(); // disconnect and stop chat!
+        window.location.href = "/bot";
+    });
 
-            } else {
-                console.log("Static msg says" + data.content)
-            };
-        });
-
-        $('#stop').click(function(){
-            $('#messages').append('<p class="sysmessage">' + 'Verbindung getrennt. ' + '</p>');
-            smoothscroll();
-
-            socket.disconnect(); // disconnect and stop chat!
-        });
+    $('.stop').click(function(){
+        socket.disconnect(); // disconnect and stop chat!
+    });
     
-    }); 
+}); 
 
 
 
