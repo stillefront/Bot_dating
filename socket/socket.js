@@ -132,7 +132,7 @@ function socket(io) {
 
             async function getBot2Auth() {
                 botAuth2 = await Bot_basic.findOne({ 'name': clientSearch.bot2 },).exec();
-                //console.log("getBot2Auth function gives: " + botAuth2);
+                console.log("getBot2Auth function gives: " + botAuth2);
             }
              
             await getClientInfo();
@@ -164,7 +164,6 @@ function socket(io) {
 
             console.log("message_json_esc: " + message_json_esc);
 
-            console.log("wann kommt man hier hin? Und funktioniert das? " + botAuth1.name )
 
             bot_array[bot_id_1].message({
                 workspace_id: botAuth1.workspace_id_token, //"fa73acd9-16d4-42cb-935f-d0b13a25395d", //workspace_id1,
@@ -188,6 +187,8 @@ function socket(io) {
 
                 var botdata_json = JSON.stringify(botdata);
                 var botdata_json_esc = botdata_json.escapeSpecialChars();
+
+                console.log("wann kommt man hier hin? Und funktioniert das? ")
                 
 
                 socket.emit('message', botAuth1.name, botdata_json_esc); // let bot respond in client
@@ -204,7 +205,7 @@ function socket(io) {
             message = JSON.parse(data);
 
             context_bot2_update = context_bot2
-            console.log("context von Bot2: " + context_bot2_update)
+            console.log(context_bot2_update)
 
             bot_array[bot_id_2].message({
                 workspace_id: botAuth2.workspace_id_token, //"65719630-1501-4db2-95db-0448295faabf", //workspace_id2, //workspace_id2,
@@ -236,7 +237,7 @@ function socket(io) {
             message = JSON.parse(data);
 
             context_bot1_update = context_bot1;
-            console.log("context von Bot1: " + context_bot1_update)
+            console.log(context_bot1_update)
 
             bot_array[bot_id_1].message({
                 workspace_id: botAuth1.workspace_id_token, //"fa73acd9-16d4-42cb-935f-d0b13a25395d", //workspace_id1,
