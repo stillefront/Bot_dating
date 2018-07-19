@@ -96,6 +96,7 @@ $(document).ready(function(){
     
     // Party starts here
     var socket = io();
+    var funnyButton = ".chat-button"
 
     //automatic start. You can manipulate the static msg in data.content
     console.log("SocketClient is working. Sending first static 'hallo' msg to the first bot");
@@ -137,6 +138,17 @@ $(document).ready(function(){
         socket.disconnect(); // disconnect and stop chat!
     });
     
+    $('.chat-button').click(function(){
+        socket.disconnect(); // disconnect and stop chat!
+        $( ".chat-button p" ).replaceWith( "<p>Zurück!<p>" );
+        $( this ).removeClass( "chat-button" );
+        $( this ).addClass( "chat-button-back" );
+        window.location.href = "/bot";
+        //$( "div.chat-button" ).toggleClass( "chat-button-back" )
+    });
+
+
+
 }); 
 
 

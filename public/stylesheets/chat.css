@@ -54,8 +54,8 @@ form button {
     flex-direction: column;
     grid-column-start: 2;
     grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
     max-height: 100%;
     overflow-y: auto;
     /* border-style: solid; */
@@ -244,11 +244,11 @@ form button {
 /*the end of NEW Chat boxes from user, bot1, bot2, systeminfo */
 
 .chat {
-	width: 100vw;
+    width: 100vw;
     height: 100vh;
-	display: grid;
+    display: grid;
     grid-template-columns: 10% 80% 10%;
-    grid-template-rows: 5% 90% 5%;
+    grid-template-rows: 5% 5% 85% 5%;
 }
 
 .chat-input {
@@ -268,33 +268,22 @@ form button {
 /* chose nickname */
 
 .chat-header {
-	grid-column-start: 2;
-    grid-column-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 4;
     grid-row-start: 1;
-	grid-row-end: 2;
-	display: flex;
-	flex-wrap: nowrap;
+    grid-row-end: 2;
+    display: flex;
+    flex-wrap: nowrap;
+    background: black;
 }
 
 .go-back-button {
 	flex-basis: 20%;
-    border-color: #e0e0e0;
-    border-style: solid;
-    border-width: 2px;
-	border-radius: 20px;
-	margin: 5px;
+
 }
 
 .chat-logo {
-	flex-basis: 60%
-}
-.stop {
-	flex-basis: 20%;
-    border-color: #e0e0e0;
-    border-style: solid;
-    border-width: 2px;
-	border-radius: 20px;
-	margin: 5px;
+	flex-basis: 80%
 }
 
 .go-back-button p {
@@ -302,13 +291,36 @@ form button {
     padding: 8px;
 }
 
-.chat-logo p {
-    text-align: center;
-    padding: 8px;
+.chat-logo-text p {
     font-size: 25px;
+    color:white;
 }
 
 .stop p {
 	text-align: center;
     padding: 8px;
+}
+
+.chat-button {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #ffff00;
+}
+
+.chat-button-back {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #ffff00;
+}
+
+.chat-logo-text {
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
