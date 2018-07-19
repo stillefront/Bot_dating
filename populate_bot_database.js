@@ -63,7 +63,7 @@ function createBots(cb) {
                 'Heidi Klum',
                 'Hi ich bin Heidi, Modelmama mit 4 eigenen Kindern und parallel auf den internationalen Laufstegen dieser Welt zuhause. Wie man das alles unter einen Hut bekommt und dabei top aussieht, fragt ihr euch? Pho Wat Face-Massagen von Conscious Body-Wellness in meiner Wahlheimat L.A und der richtigen attitude. Herausforderungen sind eben eine wichtige challenge im Leben und nicht umsonst mein Mantra. #strongisthenewskinny',
                 'heide_klum',
-                'fa73acd9-16d4-42cb-935f-d0b13a25395d',
+                'df692675-46af-4c14-929b-19d6b8330088',
                 '0d5046eb-cdff-4aaf-812c-061f7d396d0d',
                 'cIVuLdIRCO4s',
                 callback
@@ -74,7 +74,7 @@ function createBots(cb) {
                 'Lisa',
                 'Helloo, ich bin die Lisa, world traveller und schon bald deine beste Freundin. Die ein 1/2 Jahre abroad in Australien waren die bisher schönsten meines Lebens, aber hey! - man lernt NIE aus. Freu mich schon mit dir zu chatten',
                 'lisa',
-                '65719630-1501-4db2-95db-0448295faabf',
+                'f4d42d09-77c0-4be6-88f0-5332791857c6',
                 '54b3e159-42a3-439b-9829-db3ca57d3f47',
                 'DRMhV1QoPcoY',
                 callback
@@ -96,7 +96,7 @@ function createBots(cb) {
                 'Anna Koslova',
                 'Hey Ich bin die Ana! ich bin wohl sowas wie ne Person des öffentlichen Lebens bei mir dreht sich alles um: Beauty & Fitness & Fashion. ich lebe mein Traum und freue mich ihn mit euch zu teilen kiss kiss. Schönheit fängt da an wo du entscheidest du selbst zu sein.',
                 'ana_koslova',
-                'edbc1c7b-fd3a-4d78-b2d4-0ba1b7430924',
+                '6bbe83da-98b2-409e-8632-ba4755e3a1da',
                 '0a6e9f76-99cc-4f03-882f-8d41455b295b',
                 '2GS8iKZ2Ycrc',
                 callback
@@ -129,9 +129,9 @@ function createBots(cb) {
                 'Botilda',
                 'Botilda, emotionale Ex-Partnerin auf der Suche nach einem neuen Abenteuer - vielleicht bist Du der Richtige!',
                 'botilda',
-                '104a6faf-f448-49e9-aeff-cd90f9f53637',
-                'cf4fc36d-f378-4c96-bf5f-5e64b5925c4a',
-                'sl5Z4iMCMBgN',
+                '30ec0570-8b54-42d9-b4b4-5586159f1ab1',
+                'feae5702-5233-42f5-aed6-a1d7d3b70478',
+                '08VS5WWMN8oF',
                 callback
                 );
           },
@@ -140,9 +140,9 @@ function createBots(cb) {
                 'ufo361',
                 'Ihr wisst Bescheid UFO 361. Acker jeden Tag. Kauf mein neues Album 808. Macht ihr Faxen macht es rrra für die Gang ja!',
                 'ufo361',
-                '40822cd7-c3c3-459e-a6e1-93367447ee91',
-                'b30929f7-ac03-4a09-88e3-11280fcdbefa',
-                'g3iv7VvqvgJX',
+                '223a5561-ee97-42cd-bc77-89b042b63175',
+                '81904edb-a4e8-4736-8b55-571699cf2017',
+                'PPNtyMhp8ED7',
                 callback
                 );
           },
@@ -159,7 +159,7 @@ function createBots(cb) {
           },
           function(callback) {
             bot_basicCreate(
-                'Barbel',
+                'Bärbel',
                 'Ick bin die Bärbel. Aber kannst mich Babs nennen. Dit macht meen Männe ja ooch. Haste schon jehört wat et neuet jibbt?',
                 'barbel',
                 '6d09b318-ec00-461b-929c-feb250e0eaca',

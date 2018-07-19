@@ -62,7 +62,7 @@ $(document).ready(function(){
             lottieAnimation();
             smoothscroll();
             
-            if ( Math.floor((Math.random() * 100) + 1) > 50) {
+            if ( Math.floor((Math.random() * 100) + 1) > 80) {
                 setTimeout(function(){
                     $("." + botClass + "-is-typing-msg").remove();	
                     smoothscroll();
