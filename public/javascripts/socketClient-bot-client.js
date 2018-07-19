@@ -30,7 +30,7 @@ $(document).ready(function(){
     
     // this calculates the time that the Bot needs to write a msg 
     function msgSizeTimer(msgContent) {
-        let awrageCharactersPerMinute = 950; // http://typefastnow.com/average-typing-speed
+        let awrageCharactersPerMinute = 1150; // http://typefastnow.com/average-typing-speed
         let typingTime = Math.floor((JSON.stringify(msgContent).length * 1000) / (awrageCharactersPerMinute/60)); 
         return typingTime
     };
@@ -62,7 +62,7 @@ $(document).ready(function(){
             lottieAnimation();
             smoothscroll();
             
-            if ( Math.floor((Math.random() * 100) + 1) > 50) {
+            if ( Math.floor((Math.random() * 100) + 1) > 80) {
                 setTimeout(function(){
                     $("." + botClass + "-is-typing-msg").remove();	
                     smoothscroll();
@@ -79,7 +79,7 @@ $(document).ready(function(){
                             smoothscroll();	
     
                         }, msgSizeTimer(botMsgContent));
-                    }, Math.floor((Math.random() * 6000)));
+                    }, Math.floor((Math.random() * 3000)));
                 }, msgSizeTimer(botMsgContent) * Math.random());
     
             } else {
@@ -90,7 +90,7 @@ $(document).ready(function(){
                     smoothscroll();	
                 }, msgSizeTimer(botMsgContent));
             };
-        }, Math.floor((Math.random() * 5000)));	
+        }, Math.floor((Math.random() * 2000)));	
     }
     // Functions end here
     
