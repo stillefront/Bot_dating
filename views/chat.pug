@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title= title
+    title title
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
@@ -23,7 +23,19 @@ html
                     p BOTIFY
         .chat-button
             .chat-button-text
-                p STOP        
+                p STOP  
+        .chat-bots-show
+        .left-right-bot
+                .left
+                    .left-img
+                        img(src="/images/bot_profile_picture/optimized_bot_images/" + bot2ImgPath + ".png", alt="no picture")
+                    .left-name    
+                        p= bot2Name
+                .right
+                    .right-name  
+                        p= bot1Name
+                    .right-img    
+                        img(src="/images/bot_profile_picture/optimized_bot_images/" + bot1ImgPath + ".png", alt="no picture")
         #messages
 
 

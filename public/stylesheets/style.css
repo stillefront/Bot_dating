@@ -40,8 +40,8 @@ h5 {
   background-color: white;
 }
 
-.clicked {
-  background-color: yellow;
+#clicked {
+
 }
 
 .welcome-container {
@@ -115,6 +115,52 @@ h5 {
   width: 100%;
 }
 
+.welcome-bot-box {
+  width: 300px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #eeebf4;
+}
+
+.bot-name-description {
+  display:flex;
+  flex-wrap: nowrap
+}
+
+.bot-name {
+  margin: auto;
+  margin-left: 5%;
+}
+
+.bot-name p {
+  font-size: 1.0em;
+  font-weight: bold;
+}
+
+.bot-description {
+
+}
+
+.bot-img {
+
+}
+
+.bot-img img {
+  border-radius: 50%;
+}
+
+.bot-box-mouse-hover {
+  height: 20px;
+}
+
+
+.welcome-bot-box.clicked {
+  background-color: #ffff00;
+}
+
+.clicked.bot-box-mouse-hover {
+  background-color: #ffff00;
+}
 
 /* custom scrolbarrr!*/
 ::-webkit-scrollbar {
@@ -136,4 +182,8 @@ h5 {
   background: #555; 
 }
 
-
+#bot-hidden-text {
+  visibility: hidden;
+  height: 0px;
+  width: 0px;
+}
