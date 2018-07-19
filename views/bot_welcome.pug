@@ -1,23 +1,25 @@
 extends layout
 
 block content
-    
-    .container-fluid.text-center
-        h1.test= title      
-        p 10 flauschig bis borstige virtuelle Persönlichkeiten buhlen um ihre gegenseitige (und Deine) Chat-Gunst - bringe sie untereinander zum Flirten oder flirte selbst mit einer von ihnen? Klicke auf zwei (sowie den Startknopf) und der automatische Flirt beginnt. Klicke auf eine (sowie den Startknopf) und zeige Deine eigenen Kommunikationsskills... MANEGE FREI! - PLEASE TOUCH.
 
-    .container-fluid.klick-color.text-center.chat-start
-        h1.change-text Bitte wähle zwei Bots aus:
-
-    .container
-            each bot_basic in bots_list
-                .boxlenght.klick
-                    h5 #{bot_basic.name}
-                    p #{bot_basic.description}
-                    img(src="/images/bot_profile_picture/optimized_bot_images/" + bot_basic.image_path + ".png", height="100" width="100", alt="no picture")
+    .welcome-container
+        .welcome-header
+            .welcome-logo
+                .welcome-logo-text
+                    p METADATING
+                    p BOTIFY
+        .welcome-button
+            .welcome-button-text
+                p Bitte wähle zwei Bots aus:
+        .welcome-bot-container
+                each bot_basic in bots_list
+                    .boxlenght.klick
+                        h5 #{bot_basic.name}
+                        p #{bot_basic.description}
+                        img(src="/images/bot_profile_picture/optimized_bot_images/" + bot_basic.image_path + ".png", height="100" width="100", alt="no picture")
                     
-            else
-                p doesnt work
+                else
+                    p doesnt work                       
     
                    
 
