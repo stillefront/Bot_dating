@@ -248,7 +248,7 @@ form button {
     height: 100vh;
     display: grid;
     grid-template-columns: 10% 80% 10%;
-    grid-template-rows: 5% 5% 85% 5%;
+    grid-template-rows: 8% 6% 81% 5%;
 }
 
 .chat-input {
@@ -283,7 +283,7 @@ form button {
 }
 
 .chat-logo {
-	flex-basis: 80%
+    flex-basis: 14%;
 }
 
 .go-back-button p {
@@ -323,4 +323,23 @@ form button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.chat-logo-text p {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: white;
+}
+
+.chat-button-text {
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.chat-button-text p {
+    font-weight: bold;
+    font-size: 1.5em;
 }
