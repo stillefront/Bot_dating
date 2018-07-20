@@ -92,7 +92,7 @@ h5 {
   background-color: #ffff00;
 }
 
-.welcome-button:hover{
+.welcome-button.button-counter:hover{
   cursor: pointer;
  }
 
