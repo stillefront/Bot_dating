@@ -6,7 +6,6 @@ var counter = 0;
 var bot_array =[];
 
 
-
 // if you click on bots
   $( ".klick" ).on("click", function() {
 
