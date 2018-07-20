@@ -19,7 +19,7 @@ var bot_array =[];
       //save bot name to the array
       bot_array[0] = $(this).children('#bot-hidden-text').text();
       //bot_array[0]= $(this).find('.bot-name').text();
-      $( ".welcome-button-text p" ).replaceWith( "<p>Chatte selbst mit dem Bot!</p>" );
+      //$( ".welcome-button-text p" ).replaceWith( "<p>Chatte selbst mit dem Bot!</p>" );
       console.log(bot_array[0]);
       console.log(bot_array[0].length);
     }
@@ -28,6 +28,7 @@ var bot_array =[];
     if (counter == 2) {      
       //change color on clicked bot
       $(this).toggleClass('clicked');
+      $('.welcome-button').addClass('button-counter');
       //$(this).css('background', '#ffff00');
       //save bot name to the bot_array  
       //bot_array[1] = $(this).children('.bot-name-description').text();
@@ -36,16 +37,17 @@ var bot_array =[];
       console.log(bot_array[1]);
       console.log(bot_array[1].length);
       ////change "suche bots to chat now"
-      $( ".welcome-button-text p" ).replaceWith( "<p>Starte Bot-Bot-Chat</p>" );
+      $( ".welcome-button-text p" ).replaceWith( "<p>Starte Chat</p>" );
 
     }
     //if more than two clicks happen
     if (counter > 2 ) {
       //change color on selected bots back to start color
       $('.klick').removeClass('clicked');
+      $('.welcome-button').removeClass('button-counter');
       //$('welcome-bot-box').css('background', '#eeebf4');
       //change "chat now" back to >Bitte Wähle zwei Bots aus:
-      $( ".welcome-button-text p" ).replaceWith( "<p>Bitte wähle einen oder zwei Bots aus:</p>" );
+      $( ".welcome-button-text p" ).replaceWith( "<p>Bitte wähle zwei Bots aus:</p>" );
       //reset bot_array & counter
       bot_array = [0,0];
       counter = 0;
@@ -55,11 +57,11 @@ var bot_array =[];
   //if two clicks happpen, than you can click on the Chat button
   $(".welcome-button" ).on("click", function() {
     if (counter == 1) {
-      Cookies.set('userId', userId);
-      console.log("do you have a cookie?" + Cookies.get('userId'));
-      console.log("bot_array");  
-      $.post( "/bot/chat_onebot", { bot1: bot_array[0]});
-      window.location.href = "/bot/chat_onebot";
+      //Cookies.set('userId', userId);
+      //console.log("do you have a cookie?" + Cookies.get('userId'));
+      //console.log("bot_array");  
+      //$.post( "/bot/chat_onebot", { bot1: bot_array[0]});
+      //window.location.href = "/bot/chat_onebot";
     }
 
     if (counter == 2) {
