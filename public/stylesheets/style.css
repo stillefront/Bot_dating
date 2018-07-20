@@ -88,6 +88,10 @@ h5 {
   background-color: #ffff00;
 }
 
+.welcome-button:hover{
+  cursor: pointer;
+ }
+
 .welcome-button-text {
   position: relative;
   float: left;
@@ -121,6 +125,10 @@ h5 {
   margin: 20px;
   background-color: #eeebf4;
 }
+
+.welcome-bot-box:hover{
+  cursor: pointer;
+ }
 
 .bot-name-description {
   display:flex;
