@@ -312,6 +312,10 @@ form button {
     background-color: #ffff00;
 }
 
+.chat-button:hover{
+    cursor: pointer;
+   }
+
 .chat-button-back {
     grid-column-start: 1;
     grid-column-end: 4;
