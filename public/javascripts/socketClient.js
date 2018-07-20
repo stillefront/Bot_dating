@@ -30,7 +30,7 @@ $(document).ready(function(){
     
     // this calculates the time that the Bot needs to write a msg 
     function msgSizeTimer(msgContent) {
-        let awrageCharactersPerMinute = 950; // http://typefastnow.com/average-typing-speed
+        let awrageCharactersPerMinute = 1150; // http://typefastnow.com/average-typing-speed
         let typingTime = Math.floor((JSON.stringify(msgContent).length * 1000) / (awrageCharactersPerMinute/60)); 
         return typingTime
     };
@@ -50,11 +50,34 @@ $(document).ready(function(){
     }
     //scrolling function
     var smoothscroll = function(){
+
+       // var scrollHeight = $('#messages')[0].scrollHeight;
+        //var scrollTop = $('#messages')[0].scrollTop;
+       // var clientElement = scrollHeight - scrollTop;
+
         $('#messages').stop().animate({
-              scrollTop: $('#messages')[0].scrollHeight
-        }, 800);
+            scrollTop: $('#messages')[0].scrollHeight
+          } , 800);
+
+        //console.log("scrollHeight: " + scrollHeight )
+        //console.log("scrollTop: " + scrollTop )
+       // console.log("clientElement: " + clientElement)
+        //console.log("ClientElement" $('#messages')[0].scrollHeight) - $('#messages')[0].scrollTop))
     };
-    
+
+    /*
+    var smoothscroll = function(){ $(window).on("scroll", function() {
+        var scrollHeight = $('#messages').height();
+        var clientHeight = $('#messages').height() - $('#messages').scrollTop();
+	    var scrollPosition = $('#messages').height() + $('#messages').scrollTop();
+	    if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+            $('#messages').stop().animate({
+                scrollTop: $('#messages')[0].scrollHeight
+          }, 800);
+	    }
+        });
+    }
+  */  
     //this is the function that fakes the whole "is typing" thing happen.
     function fakeItTillYouMakeIt (botClass, botName, botMsgContent, botPicturePath, SocketEmitPath, data) {
         setTimeout(function() { 
@@ -79,7 +102,7 @@ $(document).ready(function(){
                             smoothscroll();	
     
                         }, msgSizeTimer(botMsgContent));
-                    }, Math.floor((Math.random() * 6000)));
+                    }, Math.floor((Math.random() * 3000)));
                 }, msgSizeTimer(botMsgContent) * Math.random());
     
             } else {
@@ -90,7 +113,7 @@ $(document).ready(function(){
                     smoothscroll();	
                 }, msgSizeTimer(botMsgContent));
             };
-        }, Math.floor((Math.random() * 5000)));	
+        }, Math.floor((Math.random() * 2000)));	
     }
     // Functions end here
     
@@ -140,7 +163,7 @@ $(document).ready(function(){
     
     $('.chat-button').click(function(){
         socket.disconnect(); // disconnect and stop chat!
-        $( ".chat-button p" ).replaceWith( "<p>Zurück!<p>" );
+        //$( ".chat-button p" ).replaceWith( "<p>Zurück!<p>" );
         $( this ).removeClass( "chat-button" );
         $( this ).addClass( "chat-button-back" );
         window.location.href = "/bot";
