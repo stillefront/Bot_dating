@@ -99,13 +99,13 @@ function socket(io) {
         socket.on("set_name", function (data) {
             names = JSON.parse(data);
             people[socket.id] = names.nickname;
-            username1 = names.username1;
-            password1 = names.password1;
-            workspace_id1 = names.workspace_id1;
+            username1[socket.id] = names.username1;
+            password1[socket.id] = names.password1;
+            workspace_id1[socket.id] = names.workspace_id1;
             namebot1[socket.id] = names.namebot1;
-            username2 = names.username2;
-            password2 = names.password2;
-            workspace_id2 = names.workspace_id2;
+            username2[socket.id] = names.username2;
+            password2[socket.id] = names.password2;
+            workspace_id2[socket.id] = names.workspace_id2;
             namebot2[socket.id] = names.namebot2;
 
 
