@@ -65,7 +65,7 @@ var bot_array =[];
     }
 
     if (counter == 2) {
-      var userId = Math.floor(Math.random() * 1000)
+      var userId = Math.floor(Math.random() * 1000000000000000)
       Cookies.set('userId', userId);
       console.log("do you have a cookie?" + Cookies.get('userId'));
       console.log("Send Bot information to the server and start chat between two Bots!");
