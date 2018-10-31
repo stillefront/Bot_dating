@@ -1,22 +1,7 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
-/*
-var Bot_basicSchema = new Schema (
-    {
-        name: {type: String},
-        description: {type: String},
-        image_path: {type: String},
-        auth_token: {type: String},
-        dev_token: {type: String},
-        date_created: {type: Date, default: Date.now},
-        created: {
-            type: Date,
-            default: Date.now
-        }
-    }
-);
-*/
+
 var Bot_basicSchema = new Schema (
     {
         name: {type: String},
